@@ -1,0 +1,55 @@
+Tablica je u 1NF ako:
+Ima primarni ključ
+Ne sadrži ponavljajuće grupe stupaca
+Nijedan stupac ne sadržava skupove podataka
+Nijedan stupac ne sadržava složene podatke (iskustvo!)
+
+Tablica je u 2NF ako (pojednostavljeno) :
+Je u 1NF
+Svaki neključni stupac ovisi o cijelom primarnom ključu, a ne samo o njegovom dijelu
+Tj, ako ga ne možemo prebaciti niti u jednu tablicu definiranu dijelovima primarnog ključa
+
+
+Tablica je u 3NF ako:
+Je u 2NF
+Svaki neključni stupac ovisi samo o ključu (tj. ne ovisi o drugim neključnim stupcima)
+Tj, ako ne pripada nekom drugom entitetu
+
+******************************************************
+Normalizirajte tablicu Servis koja se sastoji od stupaca: 
+NazivVozila
+MarkaVozila
+ModelVozila
+SerijskiBrojVozila
+NazivVlasnika
+AdresaVlasnika
+DatumServisa
+NazivServisera
+BrojRadnihSati
+Iznos
+
+
+Moguće rješenje: https://prnt.sc/fZ9Dxfw-Vi9n
+**************************************
+
+
+Domaća zadaća: 
+Normalizirajte tablicu Prodaja koja se sastoji od stupaca:
+NazivProizvoda (naziv prodanog proizvoda)
+Količina (koliko je proizvoda prodano)
+PopustNaProizvod (popust koji se može dodijeliti pojedinom proizvodu na računu)
+NazivKupca (ako je kupac tvrtka)
+ImeKupca (ako je kupac fizička osoba)
+PrezimeKupca (ako je kupac fizička osoba)
+TelefonKupca (telefon tvrtke ili fizičke osobe)
+VrijemeKupnje (datum i vrijeme kreiranja računa)
+Prodavač (ime i prezime prodavača koji je napravio prodaju)
+PopustNaRačun (popust koji se može dodijeliti na cijeli račun)
+IznosZaNaplatu (ukupna cijena s PDV-om cijelog računa)
+IznosPDV (iznos PDV-a cijelog računa)
+
+
+
+
+
+
