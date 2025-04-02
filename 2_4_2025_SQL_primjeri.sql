@@ -1,14 +1,14 @@
 /* Kod izmjene podataka paziti na uvjet WHERE */
 UPDATE KupacVIP SET Ime = 'Marija' WHERE Ime = 'Karen'
 
-/* Kupcu Kim Abercrombie promijenite prebivalište u Osijek. Kojem toèno kupcu treba promijeniti prebivalište? */
+/* Kupcu Kim Abercrombie promijenite prebivaliÅ¡te u Osijek. Kojem toÄno kupcu treba promijeniti prebivaliÅ¡te? */
 SELECT * FROM Kupac WHERE Ime = 'Kim' AND Prezime = 'Abercrombie'
 SELECT * FROM Grad
 
 UPDATE Kupac SET GradID=2 WHERE Ime = 'Kim' AND Prezime = 'Abercrombie'
 
 
-/* Kupcima èije prezime zapoèinje sa slovom A promijenite prebivalište u Rijeka */
+/* Kupcima Äije prezime zapoÄinje sa slovom A promijenite prebivaliÅ¡te u Rijeka */
 SELECT * FROM Kupac WHERE Prezime LIKE 'A%'
 UPDATE Kupac SET GradID=4 WHERE Prezime LIKE 'A%'
 
@@ -16,7 +16,7 @@ UPDATE Kupac SET GradID=4 WHERE Prezime LIKE 'A%'
 /*
 1. Kupcima s ID-evima 40, 41 i 42 promijenite e-mail u nepoznato@nepoznato.com
 2. Kupcu Eduardo Diaz promijenite ime u Edo
-3. Svim raèunima izdanim 01.04.2004. za koje se ne zna komercijalist i koji nisu plaæeni kreditnom karticom upišite komentar "Dodatno provjeriti!"
+3. Svim raÄunima izdanim 01.04.2004. za koje se ne zna komercijalist i koji nisu plaÄ‡eni kreditnom karticom upiÅ¡ite komentar "Dodatno provjeriti!"
 */
 /*--1.--*/
 SELECT * FROM Kupac WHERE IDKupac IN (40, 41, 42)
@@ -36,18 +36,18 @@ UPDATE Racun SET Komentar = 'Dodatno provjeriti!' WHERE DatumIzdavanja = '200404
 DELETE FROM KupacVIP WHERE ID = 2 
 
 /*
-Obrišite državu Njemaèku. U èemu je problem i kako ga riješiti?
-Obrišite sve kupce koji se prezivaju Trtimiroviæ. Je li se dogodila pogreška? Koliko ih je obrisano? 
-Obrišite raèun s ID-em 75123.
+ObriÅ¡ite drÅ¾avu NjemaÄku. U Äemu je problem i kako ga rijeÅ¡iti?
+ObriÅ¡ite sve kupce koji se prezivaju TrtimiroviÄ‡. Je li se dogodila pogreÅ¡ka? Koliko ih je obrisano? 
+ObriÅ¡ite raÄun s ID-em 75123.
 */ 
 --1
-DELETE FROM dbo.Drzava WHERE Naziv = 'Njemaèka'
+DELETE FROM dbo.Drzava WHERE Naziv = 'NjemaÄka'
 SELECT * FROM Drzava
 -- potrebno je obrisati sve podatke iz tablica sa stranim kljucevima
 
 --2
-SELECT * FROM Kupac WHERE Prezime = 'Trtimiroviæ'
-DELETE FROM Kupac WHERE Prezime = 'Trtimiroviæ'
+SELECT * FROM Kupac WHERE Prezime = 'TrtimiroviÄ‡'
+DELETE FROM Kupac WHERE Prezime = 'TrtimiroviÄ‡'
 
 --3
 SELECT * FROM Racun WHERE IDRacun = 75123
@@ -55,9 +55,9 @@ DELETE FROM Racun WHERE IDRacun = 75123
 
 
 /*DZ: 
-1. Upisati u bazu èinjenicu da je 18.05.2011. Robertu Mrkonjiæu (robi.mrki@gmail.si) iz Ljubljane izdan raèun RN18052011 za troje bijele trkaæe èarape velièine M i za 2 naljepnice za bicikl. Na nijedan artikl nije bilo popusta. Kupac je platio gotovinom, a prodaju je napravio novi komercijalist Garfild Maèkoviæ.
-2. Promijenite u bazi netoèan podatak da je gospodin Mrkonjiæ iz Ljubljane; on je ustvari iz Beèa.
-3. Promijenite u bazi netoèan podatak da je gospodin Mrkonjiæ kupio naljepnice; on je ustvari kupio samo èarape.
+1. Upisati u bazu Äinjenicu da je 18.05.2011. Robertu MrkonjiÄ‡u (robi.mrki@gmail.si) iz Ljubljane izdan raÄun RN18052011 za troje bijele trkaÄ‡e Äarape veliÄine M i za 2 naljepnice za bicikl. Na nijedan artikl nije bilo popusta. Kupac je platio gotovinom, a prodaju je napravio novi komercijalist Garfild MaÄkoviÄ‡.
+2. Promijenite u bazi netoÄan podatak da je gospodin MrkonjiÄ‡ iz Ljubljane; on je ustvari iz BeÄa.
+3. Promijenite u bazi netoÄan podatak da je gospodin MrkonjiÄ‡ kupio naljepnice; on je ustvari kupio samo Äarape.
 */
 
 SELECT * FROM Grad
@@ -102,7 +102,7 @@ SELECT
 FROM Kupac AS k
 INNER JOIN Grad AS g ON k.GradID = g.IDGrad
 
---Dohvatiti imena i prezimena svih kupaca i uz svakog ispisati naziv grada i države.
+--Dohvatiti imena i prezimena svih kupaca i uz svakog ispisati naziv grada i drÅ¾ave.
 SELECT
 	k.Ime AS ImeKupca,
 	k.Prezime AS PrezimeKupca,
@@ -114,16 +114,16 @@ INNER JOIN Drzava AS d ON g.DrzavaID = d.IDDrzava
 
 
 /*DZ: 
-1. Upisati u bazu èinjenicu da je 18.05.2011. Robertu Mrkonjiæu (robi.mrki@gmail.si) iz Ljubljane izdan raèun RN18052011 za troje bijele trkaæe èarape velièine M i za 2 naljepnice za bicikl. Na nijedan artikl nije bilo popusta. Kupac je platio gotovinom, a prodaju je napravio novi komercijalist Garfild Maèkoviæ.
-2. Promijenite u bazi netoèan podatak da je gospodin Mrkonjiæ iz Ljubljane; on je ustvari iz Beèa.
-3. Promijenite u bazi netoèan podatak da je gospodin Mrkonjiæ kupio naljepnice; on je ustvari kupio samo èarape.
-4. Za sve raèune izdane 01.08.2002. i plaæene American Expressom ispisati njihove ID-eve i brojeve te ime i prezime i grad kupca, ime i prezime komercijaliste te broj i podatke o isteku kreditne kartice. Rezultate sortirati prema prezimenu kupca.
-5. Ispisati nazive proizvoda koji su na nekoj stavci raèuna prodani u više od 35 komada. Svaki proizvod navesti samo jednom.
+1. Upisati u bazu Äinjenicu da je 18.05.2011. Robertu MrkonjiÄ‡u (robi.mrki@gmail.si) iz Ljubljane izdan raÄun RN18052011 za troje bijele trkaÄ‡e Äarape veliÄine M i za 2 naljepnice za bicikl. Na nijedan artikl nije bilo popusta. Kupac je platio gotovinom, a prodaju je napravio novi komercijalist Garfild MaÄkoviÄ‡.
+2. Promijenite u bazi netoÄan podatak da je gospodin MrkonjiÄ‡ iz Ljubljane; on je ustvari iz BeÄa.
+3. Promijenite u bazi netoÄan podatak da je gospodin MrkonjiÄ‡ kupio naljepnice; on je ustvari kupio samo Äarape.
+4. Za sve raÄune izdane 01.08.2002. i plaÄ‡ene American Expressom ispisati njihove ID-eve i brojeve te ime i prezime i grad kupca, ime i prezime komercijaliste te broj i podatke o isteku kreditne kartice. Rezultate sortirati prema prezimenu kupca.
+5. Ispisati nazive proizvoda koji su na nekoj stavci raÄuna prodani u viÅ¡e od 35 komada. Svaki proizvod navesti samo jednom.
 6. Vratite broj svih proizvoda.
 7. Vratite broj proizvoda koji imaju definiranu boju.
-8. Vratite najvišu cijenu proizvoda.
-9. Vratite prosjeènu cijenu proizvoda iz potkategorije 16.
-10.Vratite datume najstarijeg i najnovijeg raèuna izdanog kupcu 131.
+8. Vratite najviÅ¡u cijenu proizvoda.
+9. Vratite prosjeÄnu cijenu proizvoda iz potkategorije 16.
+10.Vratite datume najstarijeg i najnovijeg raÄuna izdanog kupcu 131.
 */
 
 
@@ -141,4 +141,13 @@ SELECT Ime, ISNULL(Telefon, 0) AS Telefon FROM Kupac WHERE Telefon IS NULL
 SELECT COUNT(*) FROM Proizvod 
 SELECT COUNT(Naziv) FROM Proizvod
 SELECT COUNT(Boja) FROM Proizvod
+
+--ZBRAJANJE VIÅ E STUPACA
+SELECT  
+             MIN(CijenaBezPDV) AS NajnizaCijena,
+             MAX(CijenaBezPDV) AS NajvisaCijena,
+             AVG(CijenaBezPDV) AS ProsjecnaCijena,
+             MIN(CijenaBezPDV) + MAX(CijenaBezPDV) AS ZbrojMINMAX
+       FROM Proizvod
+       WHERE CijenaBezPDV > 0
 
